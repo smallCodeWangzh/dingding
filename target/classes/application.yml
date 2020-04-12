@@ -1,0 +1,10 @@
+server:
+  port: 9999
+swagger:
+  base-package: com.briup.dingding.web.controller
+  title:  "钉钉对接的接口文档"
+  description: "杰普开发团队 http://www.briup.com"
+  contact:
+    url: "http://www.briup.com"
+    email: "wangzh@briup.com"
+
