@@ -11,36 +11,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.taobao.api.ApiException;
 
 public class GetATUtil {
-    public static String getAT(){
+    public static String getAT() throws ApiException, JsonProcessingException {
+        //实例化token实体类
         Access access = null;
-        try {
-            DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/gettoken");
-            OapiGettokenRequest req = new OapiGettokenRequest();
-            req.setAppkey("dingtr8oxqmbqmywxgot");
-            req.setAppsecret("qhz2jl1QK6Xu0WO_kCd-KZ8-pOS6xlPg43pinvJ1tkFMZDpOTaf307MH-nBM07wR");
-            req.setHttpMethod("GET");
-            OapiGettokenResponse rsp = client.execute(req);
-            System.out.println(rsp.getBody());
+        //钉钉官方文档获取token
+        //地址：https://ding-doc.dingtalk.com/doc#/serverapi2/eev437
+        DingTalkClient client = new DefaultDingTalkClient(DingTalkRequestURL.TOKEN_URL);
+        OapiGettokenRequest req = new OapiGettokenRequest();
+        req.setAppkey(DingTalkRequestURL.APP_KEY);
+        req.setAppsecret(DingTalkRequestURL.APP_SECRET);
+        req.setHttpMethod("GET");
+        OapiGettokenResponse rsp = client.execute(req);
+        //jackson解析json并且封装成对象
+        ObjectMapper mapper = new ObjectMapper();
+        access = mapper.readValue(rsp.getBody(), Access.class);
 
-
-            ObjectMapper mapper = new ObjectMapper();
-            access = mapper.readValue(rsp.getBody(), Access.class);
-
-            System.out.println(access.getAccess_token());
-
-
-        } catch (ApiException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
         return access.getAccess_token();
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonProcessingException, ApiException {
         System.out.println(getAT());
     }
 

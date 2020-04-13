@@ -1,5 +1,6 @@
 package com.briup.dingding.bean;
 
+import com.briup.dingding.util.DingTalkMessage;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -7,22 +8,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * @author cuigx@briup.com
+ * 部门详情实体类
+ * 该实体类字段必须按照钉钉官方文档返回格式为准，不必遵守命名规范
+ *文档地址：https://ding-doc.dingtalk.com/doc#/serverapi2/dubakq/e6e1604e
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @ToString
 @ApiModel
-public class DepartmentDetail {
-    @ApiModelProperty(value = "返回码")
-    private int errcode;
+public class DepartmentDetail extends DingTalkMessage {
     @ApiModelProperty(value = "可以查看指定隐藏部门的其他人员列表，如果部门隐藏，则此值生效，取值为其他的人员userid组成的的字符串，使用“\\|”符号进行分割")
     private String userPermits;
-    @ApiModelProperty(value = "无意义字段1")
+    @ApiModelProperty(value = "无意义字段1，文档内无描述，但是数据返回中有体现")
     private String userPerimits;
     @ApiModelProperty(value = "是否本部门的员工仅可见员工自己，为true时，本部门员工默认只能看到员工自己")
     private boolean outerDept;
-    @ApiModelProperty(value = "对返回码的文本描述内容")
-    private String errmsg;
     @ApiModelProperty(value = "部门的主管列表，取值为由主管的userid组成的字符串，不同的userid使用“\\|”符号进行分割")
     private String deptManagerUseridList;
     @ApiModelProperty(value = "父部门id，根部门为1")
@@ -33,7 +36,7 @@ public class DepartmentDetail {
     private String outerPermitUsers;
     @ApiModelProperty(value = "本部门的员工仅可见员工自己为true时，可以配置额外可见部门，值为部门id组成的的字符串，使用“\\|”符号进行分割")
     private String outerPermitDepts;
-    @ApiModelProperty(value = "无意义字段2")
+    @ApiModelProperty(value = "无意义字段2，文档内无描述，但是数据返回中有体现")
     private String deptPerimits;
     @ApiModelProperty(value = "是否同步创建一个关联此部门的企业群，true表示是，false表示不是")
     private boolean createDeptGroup;

@@ -1,11 +1,22 @@
 package com.briup.dingding.util;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Date;
 
+/**
+ * @author cuigx@briup.com
+ * @param <T>
+ */
+
 @Data
 public class Message<T> {
+
     private int code;
     private String message;
     private long time;

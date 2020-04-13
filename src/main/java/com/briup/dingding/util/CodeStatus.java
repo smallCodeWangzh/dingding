@@ -8,6 +8,7 @@ import lombok.Getter;
 public enum CodeStatus {
     SUCCESS(200,"SUCCESS"),
     ERROR(500,"服务器内部错误");
+
     private int code;
     private String msg;
 }

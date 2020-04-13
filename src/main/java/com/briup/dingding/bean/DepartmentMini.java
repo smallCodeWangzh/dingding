@@ -7,6 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * @author cuigx@briup.com
+ * 部门列表中部门简单展示实体类
+ * 该实体类字段必须按照钉钉官方文档返回格式为准，不必遵守命名规范
+ * 文档地址：https://ding-doc.dingtalk.com/doc#/serverapi2/dubakq/e6e1604e
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
