@@ -1,6 +1,5 @@
 package com.briup.dingding.web.controller;
 
-import com.briup.dingding.bean.Person;
 import com.briup.dingding.exception.CustomerException;
 import com.briup.dingding.util.CodeStatus;
 import com.briup.dingding.util.Message;
